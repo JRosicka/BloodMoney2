@@ -176,6 +176,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1542706449623603480, guid: 73e8c76dc59357a41bd3221cedd1a70b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1542706449623603480, guid: 73e8c76dc59357a41bd3221cedd1a70b, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
@@ -204,6 +208,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2066455136346725626, guid: 73e8c76dc59357a41bd3221cedd1a70b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2066455136346725626, guid: 73e8c76dc59357a41bd3221cedd1a70b, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
@@ -213,6 +221,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2865177706593494253, guid: 73e8c76dc59357a41bd3221cedd1a70b, type: 3}
       propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2865177706593494253, guid: 73e8c76dc59357a41bd3221cedd1a70b, type: 3}
+      propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2865177706593494253, guid: 73e8c76dc59357a41bd3221cedd1a70b, type: 3}
@@ -401,7 +413,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8635257233429441587, guid: 73e8c76dc59357a41bd3221cedd1a70b, type: 3}
       propertyPath: m_Name
-      value: Buttons
+      value: Interface
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73e8c76dc59357a41bd3221cedd1a70b, type: 3}

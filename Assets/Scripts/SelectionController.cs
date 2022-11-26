@@ -10,7 +10,12 @@ using UnityEngine.UI;
 /// The origin is at the top left corner, so X increases as selection moves to the right and Y increases as selection moves down. 
 /// </summary>
 public class SelectionController : MonoBehaviour {
-    public int PlayerID;
+    public enum PlayerID {
+        P1,
+        P2
+    }
+    public VerticalLayoutGroup ButtonGrid;
+    public PlayerID ID;
     public float ReselectionCooldown;
 
     public int XPos;
@@ -32,7 +37,7 @@ public class SelectionController : MonoBehaviour {
 
     // Start is called before the first frame update
     private void Start() {
-        _player = ReInput.players.GetPlayer(PlayerID);
+        _player = ReInput.players.GetPlayer((int)ID);
 
         SetupButtons();
 
@@ -48,7 +53,7 @@ public class SelectionController : MonoBehaviour {
     }
 
     private void SetupButtons() {
-        foreach (HorizontalLayoutGroup v in GetComponentsInChildren<HorizontalLayoutGroup>()) {
+        foreach (HorizontalLayoutGroup v in ButtonGrid.GetComponentsInChildren<HorizontalLayoutGroup>()) {
             _buttonRows.Add(v.GetComponentsInChildren<GameButton>().ToList());
         }
     }
@@ -136,9 +141,9 @@ public class SelectionController : MonoBehaviour {
             List<GameButton> buttons = _buttonRows[y];
             for (int x = 0; x < buttons.Count; x++) {
                 if (y == YPos && x == XPos) {
-                    buttons[x].Select();
+                    buttons[x].ToggleSelected(true, ID);
                 } else {
-                    buttons[x].Deselect();
+                    buttons[x].ToggleSelected(false, ID);
                 }
             }
         }
@@ -151,7 +156,7 @@ public class SelectionController : MonoBehaviour {
     }
 
     private void PressSelectedButton() {
-        SelectedButton.PushButton();
+        SelectedButton.TryPushButton(ID);
     }
 
 }
