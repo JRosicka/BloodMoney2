@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerCurrency {
-
-    public string ID;
+    
+    public CurrencyData Data;
     
     public float Amount;
-    public float Income;
-
-    public PlayerCurrency(string ID) {
-        this.ID = ID;
+    public float Delta;
+    
+    
+    public PlayerCurrency(CurrencyData data) {
+        Data = data;
     }
     
 }

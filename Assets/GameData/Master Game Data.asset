@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad98eb312eea77b45b46f66dc92d90d2, type: 3}
+  m_Name: Master Game Data
+  m_EditorClassIdentifier: 
+  PlayerStartingHealth: 100
+  Currencies:
+  - {fileID: 11400000, guid: 9f5c2356dbef08641a9fff67f240e216, type: 2}

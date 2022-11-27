@@ -19,10 +19,9 @@ public class PlayerManager : MonoBehaviour {
         // Create Players
         int index = 0;
         foreach (PlayerDisplay display in PlayerDisplays) {
-            display.PlayerInfo = CreatePlayer(index);
+            display.Initialize(CreatePlayer(index), GameData);
             index++;
         }
-        
     }
     
 
@@ -34,7 +33,7 @@ public class PlayerManager : MonoBehaviour {
         // Currencies
         newPlayer.Currencies = new Dictionary<string, PlayerCurrency>();
         foreach (CurrencyData currency in GameData.Currencies) {
-            newPlayer.Currencies.Add(currency.ID, new PlayerCurrency(currency.ID));
+            newPlayer.Currencies.Add(currency.ID, new PlayerCurrency(currency));
         }
         
         // Abilities
