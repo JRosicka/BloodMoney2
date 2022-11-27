@@ -1,4 +1,6 @@
-﻿/// <summary>
+﻿using UnityEngine;
+
+/// <summary>
 /// A thing that a button can do. There can be all sorts of types!
 /// </summary>
 public class Ability {
@@ -11,11 +13,13 @@ public class Ability {
     /// </summary>
     private int _currentTier;
 
+    private float _timeOfLastUsage = Mathf.NegativeInfinity;
+    
     /// <summary>
     /// Whether we need to wait to use the ability because it is on cooldown
     /// </summary>
     public bool AbilityCooldownActive() {
-        return false;  // TODO
+        return _timeOfLastUsage + Data.CooldownTime > Time.time;
     }
 
     public int CostToUse() {
@@ -30,6 +34,9 @@ public class Ability {
         if (_currentTier < Data.Tiers.Count - 1) {
             _currentTier++;
         }
+        
+        // Set cooldown time
+        _timeOfLastUsage = Time.time;
     }
 
     public Ability(AbilityData data, PlayerManager.PlayerID playerID) {
