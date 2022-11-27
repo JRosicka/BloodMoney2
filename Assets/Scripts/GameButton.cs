@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class GameButton : MonoBehaviour {
-    public string AbilityID;
+    public AbilityData AbilityData;
 
     [Header("References")] 
     public Image CurrencyIcon;
@@ -39,7 +39,7 @@ public class GameButton : MonoBehaviour {
     }
     
     public void TryPushButton(PlayerManager.PlayerID playerID) {
-        if (PlayerInfo(playerID).TryUseAbility(AbilityID)) {
+        if (PlayerInfo(playerID).TryUseAbility(AbilityData)) {
             UpdateCostText(playerID);
             
             // TODO animate
@@ -50,10 +50,8 @@ public class GameButton : MonoBehaviour {
     }
 
     private void Start() {
-        CooldownImage_p1.gameObject.SetActive(false);
-        CooldownImage_p2.gameObject.SetActive(false);
-        CooldownText_p1.gameObject.SetActive(false);
-        CooldownText_p2.gameObject.SetActive(false);
+        CooldownText_p1.alpha = 0;
+        CooldownText_p2.alpha = 0;
 
         if (GameManager.Instance.PlayerManager.PlayersCreated) {
             SetInitialInfo();
@@ -72,24 +70,24 @@ public class GameButton : MonoBehaviour {
         // Set initial costs
         UpdateCostText(PlayerManager.PlayerID.P1);
         UpdateCostText(PlayerManager.PlayerID.P2);
+        
+        if (AbilityData == null) return;
 
         // Set currency icon
-        if (AbilityID == "") return;
-        AbilityData data = PlayerInfo(PlayerManager.PlayerID.P1).GetAbility(AbilityID).Data;
-        string currencyID = data.CurrencyID;
+        string currencyID = AbilityData.Currency.ID;
         CurrencyData currencyData = GameManager.Instance.PlayerManager.GameData.Currencies.First(c => c.ID == currencyID);
         CurrencyIcon.sprite = currencyData.Sprite;
-        AbilityIcon.sprite = data.AbilityIcon;
+        AbilityIcon.sprite = AbilityData.AbilityIcon;
         
         // Ability text
-        AbilityText.text = data.ID;
+        AbilityText.text = AbilityData.ID;
     }
     
     private void UpdateCostText(PlayerManager.PlayerID playerID) {
-        if (AbilityID == "") return;
+        if (AbilityData == null) return;
         
         TextMeshProUGUI text = playerID == PlayerManager.PlayerID.P1 ? Cost_p1 : Cost_p2;
-        text.text = PlayerInfo(playerID).GetAbility(AbilityID)
+        text.text = PlayerInfo(playerID).GetAbility(AbilityData)
             .CostToUse().ToString("N0");
     }
 
@@ -109,11 +107,11 @@ public class GameButton : MonoBehaviour {
         CooldownAnimation cdAnimation = new CooldownAnimation();
         cdAnimation.RT = playerID == PlayerManager.PlayerID.P1 ? CooldownImage_p1 : CooldownImage_p2;
         cdAnimation.OriginalYSizeDelta = cdAnimation.RT.sizeDelta.y;
-        cdAnimation.RT.gameObject.SetActive(true);
+        AdjustImageAlpha(cdAnimation.RT.GetComponent<Image>(), 0.63f);
 
         cdAnimation.StartTime = cdAnimation.CurrentTime = Time.time;
         cdAnimation.TargetEndTime = Time.time 
-            + PlayerInfo(playerID).GetAbility(AbilityID).Data.CooldownTime;
+            + AbilityData.CooldownTime;
 
         if (playerID == PlayerManager.PlayerID.P1) {
             _cooldownAnimation_p1 = cdAnimation;
@@ -123,20 +121,20 @@ public class GameButton : MonoBehaviour {
         
         // Show cooldown text
         cdAnimation.Text = playerID == PlayerManager.PlayerID.P1 ? CooldownText_p1 : CooldownText_p2;
-        cdAnimation.Text.gameObject.SetActive(true);
+        cdAnimation.Text.alpha = 1;
         cdAnimation.Text.text = $"{cdAnimation.TargetEndTime - cdAnimation.StartTime}s";
     }
 
     private void UpdateCooldownAnimation(ref CooldownAnimation cdAnimation) {
         if (cdAnimation == null) return;
         cdAnimation.CurrentTime += Time.deltaTime;
-        cdAnimation.Text.text = $"{(int)(cdAnimation.TargetEndTime - cdAnimation.CurrentTime)}s";
+        cdAnimation.Text.text = $"{(int)(cdAnimation.TargetEndTime - cdAnimation.CurrentTime)}<size=0.7em>s</size>";
 
         if (cdAnimation.CurrentTime >= cdAnimation.TargetEndTime) {
             // End of cooldown
             cdAnimation.RT.sizeDelta = new Vector2(cdAnimation.RT.sizeDelta.x, cdAnimation.OriginalYSizeDelta);
-            cdAnimation.RT.gameObject.SetActive(false);
-            cdAnimation.Text.gameObject.SetActive(false);
+            AdjustImageAlpha(cdAnimation.RT.GetComponent<Image>(), 0);
+            cdAnimation.Text.alpha = 0;
             cdAnimation = null;
             return;
         }
@@ -144,5 +142,11 @@ public class GameButton : MonoBehaviour {
         float progress = (cdAnimation.CurrentTime - cdAnimation.StartTime)
                          / (cdAnimation.TargetEndTime - cdAnimation.StartTime);
         cdAnimation.RT.sizeDelta = new Vector2(cdAnimation.RT.sizeDelta.x, Mathf.Lerp(1, 0, progress) * cdAnimation.OriginalYSizeDelta);
+    }
+
+    private void AdjustImageAlpha(Image image, float newAlpha) {
+        Color temp = image.color;
+        temp.a = newAlpha;
+        image.color = temp;
     }
 }

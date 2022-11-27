@@ -6,9 +6,12 @@ using UnityEngine;
 public class AbilityData : ScriptableObject {
     public string ID;
     public Sprite AbilityIcon;
-    public string CurrencyID;
+    public CurrencyData Currency;
     public float CooldownTime;
     public List<AbilityTier> Tiers;
+
+    [TextArea(3, 6)]
+    public string DescriptionString;
 }
 
 [Serializable]
