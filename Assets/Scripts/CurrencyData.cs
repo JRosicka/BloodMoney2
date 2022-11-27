@@ -9,5 +9,6 @@ public class CurrencyData : ScriptableObject {
     public string ID;
     public string DisplayName;
     public int Max;
+    public Sprite Sprite;
 
 }

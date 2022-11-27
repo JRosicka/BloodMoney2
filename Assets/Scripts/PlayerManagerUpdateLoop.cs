@@ -34,6 +34,13 @@ public class PlayerManagerUpdateLoop {
                 0f,
                 player.Currencies[currencyID].Data.Max < 0 ? Mathf.Infinity : player.Currencies[currencyID].Data.Max);
         }
+        
+        // Update Buffs (remove any that have expired)
+        for (int i = player.ActiveBuffs.Count - 1; i >= 0; i--) {
+            if (player.ActiveBuffs[i].TimeLeft() <= 0f) {
+                player.DestroyBuff(player.ActiveBuffs[i].Data);
+            }
+        }
     }
     
 }

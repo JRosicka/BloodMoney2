@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Ability", menuName = "Game Data/Ability")]
 public class AbilityData : ScriptableObject {
     public string ID;
+    public Sprite AbilityIcon;
     public string CurrencyID;
     public float CooldownTime;
     public List<AbilityTier> Tiers;

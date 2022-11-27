@@ -1,15 +1,26 @@
 using System;
+using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GameButton : MonoBehaviour {
     public string AbilityID;
-    
-    [Header("References")]
-    public Image SelectedImage_p1;
-    public Image SelectedImage_p2;
+
+    [Header("References")] 
+    public Image CurrencyIcon;
+    public Image AbilityIcon;
+    public GameObject SelectedImage_p1;
+    public GameObject SelectedImage_p2;
     public RectTransform CooldownImage_p1;
     public RectTransform CooldownImage_p2;
+    public TextMeshProUGUI CooldownText_p1;
+    public TextMeshProUGUI CooldownText_p2;
+    public TextMeshProUGUI Cost_p1;
+    public TextMeshProUGUI Cost_p2;
+    public TextMeshProUGUI AbilityText;
+
+    private PlayerInfo PlayerInfo(PlayerManager.PlayerID id) => GameManager.Instance.PlayerManager.GetPlayerInfo(id);
     
     public void ToggleSelected(bool selected, PlayerManager.PlayerID playerID) {
         
@@ -17,10 +28,10 @@ public class GameButton : MonoBehaviour {
         
         switch(playerID){
             case PlayerManager.PlayerID.P1:
-                SelectedImage_p1.gameObject.SetActive(selected);
+                SelectedImage_p1.SetActive(selected);
                 break;
             case PlayerManager.PlayerID.P2:
-                SelectedImage_p2.gameObject.SetActive(selected);
+                SelectedImage_p2.SetActive(selected);
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(playerID), playerID, null);
@@ -28,7 +39,9 @@ public class GameButton : MonoBehaviour {
     }
     
     public void TryPushButton(PlayerManager.PlayerID playerID) {
-        if (GameManager.Instance.PlayerManager.GetPlayerInfo(playerID).TryUseAbility(AbilityID)) {
+        if (PlayerInfo(playerID).TryUseAbility(AbilityID)) {
+            UpdateCostText(playerID);
+            
             // TODO animate
             StartCooldownAnimation(playerID);
         } else {
@@ -36,9 +49,48 @@ public class GameButton : MonoBehaviour {
         }
     }
 
+    private void Start() {
+        CooldownImage_p1.gameObject.SetActive(false);
+        CooldownImage_p2.gameObject.SetActive(false);
+        CooldownText_p1.gameObject.SetActive(false);
+        CooldownText_p2.gameObject.SetActive(false);
+
+        if (GameManager.Instance.PlayerManager.PlayersCreated) {
+            SetInitialInfo();
+        } else {
+            // We must not have created the players yet, but are just about to. Wait for that to happen. 
+            GameManager.Instance.PlayerManager.OnPlayersCreated += SetInitialInfo;
+        }
+    }
+
     private void Update() {
         UpdateCooldownAnimation(ref _cooldownAnimation_p1);
         UpdateCooldownAnimation(ref _cooldownAnimation_p2);
+    }
+
+    private void SetInitialInfo() {
+        // Set initial costs
+        UpdateCostText(PlayerManager.PlayerID.P1);
+        UpdateCostText(PlayerManager.PlayerID.P2);
+
+        // Set currency icon
+        if (AbilityID == "") return;
+        AbilityData data = PlayerInfo(PlayerManager.PlayerID.P1).GetAbility(AbilityID).Data;
+        string currencyID = data.CurrencyID;
+        CurrencyData currencyData = GameManager.Instance.PlayerManager.GameData.Currencies.First(c => c.ID == currencyID);
+        CurrencyIcon.sprite = currencyData.Sprite;
+        AbilityIcon.sprite = data.AbilityIcon;
+        
+        // Ability text
+        AbilityText.text = data.ID;
+    }
+    
+    private void UpdateCostText(PlayerManager.PlayerID playerID) {
+        if (AbilityID == "") return;
+        
+        TextMeshProUGUI text = playerID == PlayerManager.PlayerID.P1 ? Cost_p1 : Cost_p2;
+        text.text = PlayerInfo(playerID).GetAbility(AbilityID)
+            .CostToUse().ToString("N0");
     }
 
     private class CooldownAnimation {
@@ -48,6 +100,7 @@ public class GameButton : MonoBehaviour {
         public float TargetEndTime;
         public float CurrentTime;
         public float OriginalYSizeDelta;
+        public TextMeshProUGUI Text;
     }
 
     private CooldownAnimation _cooldownAnimation_p1;
@@ -55,37 +108,41 @@ public class GameButton : MonoBehaviour {
     private void StartCooldownAnimation(PlayerManager.PlayerID playerID) {
         CooldownAnimation cdAnimation = new CooldownAnimation();
         cdAnimation.RT = playerID == PlayerManager.PlayerID.P1 ? CooldownImage_p1 : CooldownImage_p2;
-        Vector2 sizeDelta = cdAnimation.RT.sizeDelta;
-        cdAnimation.OriginalYSizeDelta = sizeDelta.y;
-        sizeDelta = new Vector2(sizeDelta.x, 0);
-        cdAnimation.RT.sizeDelta = sizeDelta;
+        cdAnimation.OriginalYSizeDelta = cdAnimation.RT.sizeDelta.y;
         cdAnimation.RT.gameObject.SetActive(true);
 
         cdAnimation.StartTime = cdAnimation.CurrentTime = Time.time;
         cdAnimation.TargetEndTime = Time.time 
-            + GameManager.Instance.PlayerManager.GetPlayerInfo(playerID).GetAbility(AbilityID).Data.CooldownTime;
+            + PlayerInfo(playerID).GetAbility(AbilityID).Data.CooldownTime;
 
         if (playerID == PlayerManager.PlayerID.P1) {
             _cooldownAnimation_p1 = cdAnimation;
         } else {
             _cooldownAnimation_p2 = cdAnimation;
         }
+        
+        // Show cooldown text
+        cdAnimation.Text = playerID == PlayerManager.PlayerID.P1 ? CooldownText_p1 : CooldownText_p2;
+        cdAnimation.Text.gameObject.SetActive(true);
+        cdAnimation.Text.text = $"{cdAnimation.TargetEndTime - cdAnimation.StartTime}s";
     }
 
     private void UpdateCooldownAnimation(ref CooldownAnimation cdAnimation) {
         if (cdAnimation == null) return;
         cdAnimation.CurrentTime += Time.deltaTime;
+        cdAnimation.Text.text = $"{(int)(cdAnimation.TargetEndTime - cdAnimation.CurrentTime)}s";
 
         if (cdAnimation.CurrentTime >= cdAnimation.TargetEndTime) {
             // End of cooldown
             cdAnimation.RT.sizeDelta = new Vector2(cdAnimation.RT.sizeDelta.x, cdAnimation.OriginalYSizeDelta);
             cdAnimation.RT.gameObject.SetActive(false);
+            cdAnimation.Text.gameObject.SetActive(false);
             cdAnimation = null;
             return;
         }
 
         float progress = (cdAnimation.CurrentTime - cdAnimation.StartTime)
                          / (cdAnimation.TargetEndTime - cdAnimation.StartTime);
-        cdAnimation.RT.sizeDelta = new Vector2(cdAnimation.RT.sizeDelta.x, Mathf.Lerp(0, 1, progress) * cdAnimation.OriginalYSizeDelta);
+        cdAnimation.RT.sizeDelta = new Vector2(cdAnimation.RT.sizeDelta.x, Mathf.Lerp(1, 0, progress) * cdAnimation.OriginalYSizeDelta);
     }
 }

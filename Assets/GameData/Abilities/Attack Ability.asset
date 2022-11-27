@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Attack Ability
   m_EditorClassIdentifier: 
   ID: Attack
-  CurrencyID: Gold
+  AbilityIcon: {fileID: 21300000, guid: b573f60909f9236409b4266ef0011491, type: 3}
+  CurrencyID: Money
   CooldownTime: 5
   Tiers:
   - Cost: 0

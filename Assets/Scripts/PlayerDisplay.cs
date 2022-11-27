@@ -18,9 +18,15 @@ public class PlayerDisplay : MonoBehaviour {
     public NumberValueDisplay CurrencyDisplayTemplate;
     private Dictionary<string, NumberValueDisplay> CurrencyDisplays;
 
+    [Header("Buffs")]
+    public RectTransform BuffGroupRT;
+    public BuffDisplay BuffDisplayTemplate;
+    private Dictionary<string, BuffDisplay> BuffDisplays;
+
     public void Initialize(PlayerInfo playerInfo, GameData gameData) {
         _playerInfo = playerInfo;
         CurrencyDisplays = new Dictionary<string, NumberValueDisplay>();
+        BuffDisplays = new Dictionary<string, BuffDisplay>();
         
         // Initialize Health Display
         UpdateHealthDisplay();
@@ -35,13 +41,31 @@ public class PlayerDisplay : MonoBehaviour {
         
         // Deactivate Template Currency
         CurrencyDisplayTemplate.gameObject.SetActive(false);
+        
+        // Deactivate Template Buff
+        BuffDisplayTemplate.gameObject.SetActive(false);
+        
+        // Watch PlayerInfo Delegates
+        _playerInfo.OnBuffCreated += OnBuffCreated;
+        _playerInfo.OnBuffDestroyed += OnBuffDestroyed;
     }
     
+    // UPDATE LOOP
     private void Update() {
+        
+        // Update Health Display
         UpdateHealthDisplay();
+        
+        // Update Currency Display
         foreach (string currencyID in CurrencyDisplays.Keys) {
             UpdateCurrencyDisplay(currencyID);
         }
+        
+        // Update Buff Display
+        foreach (string buffID in BuffDisplays.Keys) {
+            UpdateBuffDisplay(buffID);
+        }
+        
     }
 
     private void UpdateHealthDisplay() {
@@ -55,6 +79,30 @@ public class PlayerDisplay : MonoBehaviour {
         CurrencyDisplays[currencyID].SetValueNumerator(Mathf.FloorToInt(currency.Amount));
         CurrencyDisplays[currencyID].SetValueDenominator(Mathf.FloorToInt(currency.Data.Max));
         CurrencyDisplays[currencyID].SetDelta(Mathf.FloorToInt(currency.Delta));
+    }
+
+    private void UpdateBuffDisplay(string buffID) {
+        BuffDisplay buffDisplay = BuffDisplays[buffID];
+        PlayerBuff activeBuff = _playerInfo.GrabExistingBuff(buffID);
+        buffDisplay.DurationText.text = Mathf.CeilToInt(activeBuff.TimeLeft()).ToString();
+        buffDisplay.DurationBar.SetPct(activeBuff.TimeLeft() / activeBuff.Data.Duration);
+    }
+
+    private void OnBuffCreated(PlayerBuff playerBuff) {
+        BuffDisplay newBuffDisplay = Instantiate(BuffDisplayTemplate, BuffGroupRT);
+        newBuffDisplay.gameObject.SetActive(true);
+        newBuffDisplay.Initialize(playerBuff.Data);
+        BuffDisplays.Add(playerBuff.Data.ID, newBuffDisplay);
+        UpdateBuffDisplay(playerBuff.Data.ID);
+    }
+
+    private void OnBuffDestroyed(PlayerBuff playerBuff) {
+        if (!BuffDisplays.ContainsKey(playerBuff.Data.ID)) {
+            Debug.Log("No displayer found for " + playerBuff.Data.ID);
+            return;;
+        }
+        Destroy(BuffDisplays[playerBuff.Data.ID].gameObject);
+        BuffDisplays.Remove(playerBuff.Data.ID);
     }
     
 
