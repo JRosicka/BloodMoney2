@@ -9,14 +9,15 @@ public class GameButton : MonoBehaviour {
 
     [Header("References")] 
     public Image CurrencyIcon;
-    public Image SelectedImage_p1;
-    public Image SelectedImage_p2;
+    public GameObject SelectedImage_p1;
+    public GameObject SelectedImage_p2;
     public RectTransform CooldownImage_p1;
     public RectTransform CooldownImage_p2;
     public TextMeshProUGUI CooldownText_p1;
     public TextMeshProUGUI CooldownText_p2;
     public TextMeshProUGUI Cost_p1;
     public TextMeshProUGUI Cost_p2;
+    public TextMeshProUGUI AbilityText;
 
     private PlayerInfo PlayerInfo(PlayerManager.PlayerID id) => GameManager.Instance.PlayerManager.GetPlayerInfo(id);
     
@@ -26,10 +27,10 @@ public class GameButton : MonoBehaviour {
         
         switch(playerID){
             case PlayerManager.PlayerID.P1:
-                SelectedImage_p1.gameObject.SetActive(selected);
+                SelectedImage_p1.SetActive(selected);
                 break;
             case PlayerManager.PlayerID.P2:
-                SelectedImage_p2.gameObject.SetActive(selected);
+                SelectedImage_p2.SetActive(selected);
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(playerID), playerID, null);
@@ -73,9 +74,13 @@ public class GameButton : MonoBehaviour {
 
         // Set currency icon
         if (AbilityID == "") return;
-        string currencyID = PlayerInfo(PlayerManager.PlayerID.P1).GetAbility(AbilityID).Data.CurrencyID;
-        CurrencyData data = GameManager.Instance.PlayerManager.GameData.Currencies.First(c => c.ID == currencyID);
-        CurrencyIcon.sprite = data.Sprite;
+        AbilityData data = PlayerInfo(PlayerManager.PlayerID.P1).GetAbility(AbilityID).Data;
+        string currencyID = data.CurrencyID;
+        CurrencyData currencyData = GameManager.Instance.PlayerManager.GameData.Currencies.First(c => c.ID == currencyID);
+        CurrencyIcon.sprite = currencyData.Sprite;
+        
+        // Ability text
+        AbilityText.text = data.ID;
     }
     
     private void UpdateCostText(PlayerManager.PlayerID playerID) {
