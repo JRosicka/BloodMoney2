@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Sirenix.OdinInspector;
@@ -7,6 +8,17 @@ public class PlayerManager : MonoBehaviour {
     public enum PlayerID {
         P1,
         P2
+    }
+
+    public static PlayerID OpponentOf(PlayerID id) {
+        switch (id) {
+            case PlayerID.P1:
+                return PlayerID.P2;
+            case PlayerID.P2:
+                return PlayerID.P1;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(id), id, null);
+        }
     }
 
     public PlayerInfo GetPlayerInfo(PlayerID id) => _playerInfos.First(p => p.ID == id);
