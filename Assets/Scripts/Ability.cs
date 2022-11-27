@@ -2,8 +2,9 @@
 /// A thing that a button can do. There can be all sorts of types!
 /// </summary>
 public class Ability {
-    public string CurrencyID { get; }
     public AbilityData Data { get; }
+
+    private PlayerManager.PlayerID _playerID;
     
     /// <summary>
     /// Increments each time we use the ability
@@ -18,16 +19,14 @@ public class Ability {
     }
 
     public int CostToUse() {
-        return 0;    // TODO
+        return Data.Tiers[_currentTier].Cost;
     }
 
-    public void BuyAndUseAbility() {
+    public void UseAbility() {
         AbilityTier tier = Data.Tiers[_currentTier];
-        // Buy
-        // TODO
         
         // Use
-        Data.Effects.ForEach(e => e.DoEffect(tier.EffectAmount));
+        Data.Effects.ForEach(e => e.DoEffect(_playerID, tier.EffectAmount));
         
         // Increment
         if (_currentTier < Data.Tiers.Count - 1) {
@@ -35,7 +34,8 @@ public class Ability {
         }
     }
 
-    public Ability(AbilityData data) {
+    public Ability(AbilityData data, PlayerManager.PlayerID playerID) {
         Data = data;
+        _playerID = playerID;
     }
 }

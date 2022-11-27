@@ -896,6 +896,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button
       objectReference: {fileID: 0}
+    - target: {fileID: 4793414185450954631, guid: 6f38f17a8d8c8bc42a980dfb0bd0f266, type: 3}
+      propertyPath: AbilityID
+      value: Money
+      objectReference: {fileID: 0}
     - target: {fileID: 6740794519781997776, guid: 6f38f17a8d8c8bc42a980dfb0bd0f266, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1241,6 +1245,10 @@ PrefabInstance:
     - target: {fileID: 4665046266768673202, guid: 6f38f17a8d8c8bc42a980dfb0bd0f266, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 6.8500004
+      objectReference: {fileID: 0}
+    - target: {fileID: 4793414185450954631, guid: 6f38f17a8d8c8bc42a980dfb0bd0f266, type: 3}
+      propertyPath: AbilityID
+      value: Attack
       objectReference: {fileID: 0}
     - target: {fileID: 6740794519781997776, guid: 6f38f17a8d8c8bc42a980dfb0bd0f266, type: 3}
       propertyPath: m_AnchorMax.x
