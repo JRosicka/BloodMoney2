@@ -28,7 +28,7 @@ public class PlayerInfo {
         if (!CanUseAbility(ability)) return false;
         
         // Buy it
-        Currencies[ability.Data.CurrencyID].Spend(ability.CostToUse());
+        Currencies[ability.Data.Currency.ID].Spend(ability.CostToUse());
         
         ability.UseAbility();
         return true;
@@ -39,7 +39,7 @@ public class PlayerInfo {
     }
 
     private bool CanAffordAbility(Ability ability) {
-        return ability.CostToUse() <= Currencies[ability.Data.CurrencyID].Amount;
+        return ability.CostToUse() <= Currencies[ability.Data.Currency.ID].Amount;
     }
 
     public void AddBuff(BuffData buff) {

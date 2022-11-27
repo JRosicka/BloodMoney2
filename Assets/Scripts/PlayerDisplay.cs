@@ -23,6 +23,9 @@ public class PlayerDisplay : MonoBehaviour {
     public BuffDisplay BuffDisplayTemplate;
     private Dictionary<string, BuffDisplay> BuffDisplays;
 
+    [Header("Ability Info")]
+    public AbilityInfoPanelDisplay AbilityInfoPanel;
+
     public void Initialize(PlayerInfo playerInfo, GameData gameData) {
         _playerInfo = playerInfo;
         CurrencyDisplays = new Dictionary<string, NumberValueDisplay>();

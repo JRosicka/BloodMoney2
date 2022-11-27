@@ -15,4 +15,4 @@ MonoBehaviour:
   ID: Blood
   DisplayName: Blood
   Max: -1
-  Sprite: {fileID: 21300000, guid: ff00345da0563d641903c5bd5bb748a4, type: 3}
+  Sprite: {fileID: 21300000, guid: d8286cf57ed71e64e87d2e97c0624bf6, type: 3}

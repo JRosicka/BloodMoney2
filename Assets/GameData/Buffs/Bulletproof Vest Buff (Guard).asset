@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d88ec8eec4e457f82b1ac0ed0d0efd3, type: 3}
+  m_Name: Bulletproof Vest Buff (Guard)
+  m_EditorClassIdentifier: 
+  ID: Bulletproof Vest
+  ArtSprite: {fileID: 21300000, guid: 5fa3da18e4ba06940a7063ae0d96924c, type: 3}
+  BackgroundSprite: {fileID: 21300000, guid: 39e6b9790e5983349a3e7a992fffb9f6, type: 3}
+  Duration: 5
+  StartEffects: []
+  Effects: []
+  EffectPeriod: 0.1
+  EndEffects: []
+  CausesGuard: 1

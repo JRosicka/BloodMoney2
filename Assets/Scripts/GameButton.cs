@@ -76,7 +76,7 @@ public class GameButton : MonoBehaviour {
         // Set currency icon
         if (AbilityID == "") return;
         AbilityData data = PlayerInfo(PlayerManager.PlayerID.P1).GetAbility(AbilityID).Data;
-        string currencyID = data.CurrencyID;
+        string currencyID = data.Currency.ID;
         CurrencyData currencyData = GameManager.Instance.PlayerManager.GameData.Currencies.First(c => c.ID == currencyID);
         CurrencyIcon.sprite = currencyData.Sprite;
         AbilityIcon.sprite = data.AbilityIcon;

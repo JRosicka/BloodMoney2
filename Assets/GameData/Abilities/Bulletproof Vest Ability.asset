@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: Bulletproof Vest
   AbilityIcon: {fileID: 21300000, guid: 5fa3da18e4ba06940a7063ae0d96924c, type: 3}
-  CurrencyID: Money
+  Currency: {fileID: 11400000, guid: 9f5c2356dbef08641a9fff67f240e216, type: 2}
   CooldownTime: 5
   Tiers:
   - Cost: 10
