@@ -13,5 +13,7 @@ public class BuffData : ScriptableObject {
     public List<AbstractAbilityEffect> Effects;
     public float EffectPeriod = 0.1f;
     public List<AbstractAbilityEffect> EndEffects;
-    
+
+    public bool CausesGuard;
+
 }

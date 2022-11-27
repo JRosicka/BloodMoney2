@@ -10,26 +10,29 @@ public class PlayerManagerEffectActions {
         _manager = manager;
     }
     
-    public void AddHealth (PlayerManager.PlayerID playerID, float addAmount) {
+    public void DealDamage (PlayerManager.PlayerID playerID, float damageAmount) {
         PlayerInfo playerInfo = _manager.GetPlayerInfo(playerID);
-        playerInfo.HealthCurrent = Mathf.Clamp(playerInfo.HealthCurrent + addAmount, 0, playerInfo.HealthMax);
+        playerInfo.TakeDamage(damageAmount);
+    }
+
+    public void Heal(PlayerManager.PlayerID playerID, float healAmount) {
+        PlayerInfo playerInfo = _manager.GetPlayerInfo(playerID);
+        playerInfo.Heal(healAmount);
     }
     
     public void AddHealthDelta (PlayerManager.PlayerID playerID, float addAmount) {
         PlayerInfo playerInfo = _manager.GetPlayerInfo(playerID);
-        playerInfo.HealthDelta = playerInfo.HealthDelta + addAmount;
+        playerInfo.AddHealthDelta(addAmount);
     }
 
     public void AddCurrency(PlayerManager.PlayerID playerID, CurrencyData currencyData, float addAmount) {
         PlayerInfo playerInfo = _manager.GetPlayerInfo(playerID);
-        PlayerCurrency currency = playerInfo.Currencies[currencyData.ID];
-        currency.Amount = Mathf.Clamp(currency.Amount + addAmount, 0, currencyData.Max > 0 ? currencyData.Max : Mathf.Infinity);
+        playerInfo.AddCurrency(currencyData, addAmount);
     }
 
     public void AddCurrencyDelta(PlayerManager.PlayerID playerID, CurrencyData currencyData, float addAmount) {
         PlayerInfo playerInfo = _manager.GetPlayerInfo(playerID);
-        PlayerCurrency currency = playerInfo.Currencies[currencyData.ID];
-        currency.Delta = currency.Delta + addAmount;
+        playerInfo.AddCurrencyDelta(currencyData, addAmount);
     }
 
     public void AddBuff(PlayerManager.PlayerID playerID, BuffData buff) {
