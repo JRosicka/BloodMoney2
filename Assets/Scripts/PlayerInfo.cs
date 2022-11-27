@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 
 public class PlayerInfo {
     public PlayerManager.PlayerID ID;
@@ -14,19 +12,22 @@ public class PlayerInfo {
 
     private Ability GetAbility(string id) => Abilities.First(a => a.Data.ID == id);
     
-    public bool CanUseAbility(string abilityID) {
+    public bool TryUseAbility(string abilityID) {
         Ability ability = GetAbility(abilityID);
+        if (!CanUseAbility(ability)) return false;
+        
+        // Buy it
+        Currencies[ability.Data.CurrencyID].Spend(ability.CostToUse());
+        
+        ability.UseAbility();
+        return true;
+    }
+
+    private bool CanUseAbility(Ability ability) {
         return CanAffordAbility(ability) && !ability.AbilityCooldownActive();
     }
 
     private bool CanAffordAbility(Ability ability) {
-        return ability.CostToUse() <= Currencies[ability.CurrencyID].Amount;
-    }
-
-    public bool TryUseAbility(string abilityID) {
-        if (!CanUseAbility(abilityID)) return false;
-        
-        GetAbility(abilityID).BuyAndUseAbility();
-        return true;
+        return ability.CostToUse() <= Currencies[ability.Data.CurrencyID].Amount;
     }
 }

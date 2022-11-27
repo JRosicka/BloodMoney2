@@ -11,7 +11,7 @@ public class PlayerManager : MonoBehaviour {
     public PlayerInfo GetPlayerInfo(PlayerID id) => _playerInfos.First(p => p.ID == id);
     
     public List<PlayerDisplay> PlayerDisplays;
-    private List<PlayerInfo> _playerInfos;
+    private List<PlayerInfo> _playerInfos = new List<PlayerInfo>();
 
     public PlayerManagerEffectActions EffectActions;
     private PlayerManagerUpdateLoop _updateLoop;
@@ -20,11 +20,10 @@ public class PlayerManager : MonoBehaviour {
 
     private void Start() {
         // Create Players
-        int index = 0;
-        foreach (PlayerDisplay display in PlayerDisplays) {
-            display.Initialize(CreatePlayer(index), GameData);
-            index++;
-        }
+        PlayerInfo player = CreatePlayer(0);
+        PlayerDisplays[0].Initialize(player, GameData);
+        player = CreatePlayer(1);
+        PlayerDisplays[1].Initialize(player, GameData);
 
         EffectActions = new PlayerManagerEffectActions(this);
         _updateLoop = new PlayerManagerUpdateLoop(this);
@@ -45,7 +44,7 @@ public class PlayerManager : MonoBehaviour {
         // Abilities
         newPlayer.Abilities = new List<Ability>();
         foreach (AbilityData ability in GameData.Abilities) {
-            newPlayer.Abilities.Add(new Ability(ability));
+            newPlayer.Abilities.Add(new Ability(ability, (PlayerID)playerIndex));
         }
         
         _playerInfos.Add(newPlayer);

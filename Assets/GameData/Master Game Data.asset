@@ -15,3 +15,7 @@ MonoBehaviour:
   PlayerStartingHealth: 100
   Currencies:
   - {fileID: 11400000, guid: 9f5c2356dbef08641a9fff67f240e216, type: 2}
+  - {fileID: 11400000, guid: ca9ae07813dc40942bde624c2ce35288, type: 2}
+  Abilities:
+  - {fileID: 11400000, guid: f577beaafb236224eb7ef124046646f8, type: 2}
+  - {fileID: 11400000, guid: f46b37b900ba3e74ba1355fe6b45a18c, type: 2}
