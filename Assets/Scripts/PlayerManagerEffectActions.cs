@@ -33,7 +33,8 @@ public class PlayerManagerEffectActions {
     }
 
     public void AddBuff(PlayerManager.PlayerID playerID, BuffData buff) {
-        
+        PlayerInfo playerInfo = _manager.GetPlayerInfo(playerID);
+        playerInfo.AddBuff(buff);
     } 
     
 }
