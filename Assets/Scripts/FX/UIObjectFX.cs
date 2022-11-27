@@ -11,43 +11,12 @@ public class UIObjectFX : MonoBehaviour {
     
     private static UIObjectFX instance;
 
-    public enum EffectType {
-        
-        // Combined rotational wiggle and scale pulse. Use to attract the eye to the next desired input.
-        AttentionShake,    
-        
-        // Instant white flash, then fade. Use to attract attention to lower-opacity objects.
-        WhiteFlash,
-        
-        // Size Pulse. Indicate that a button has been pressed.
-        ButtonClickSuccess,
-        
-        // Shake and rotation that simulates an "I can't do that" waggle. Indicate that an action can't be taken right now.
-        ButtonClickFailure,  
-        
-        // Shake, size pulse, and a small upward bounce. Used on a currency icon when the associated currency goes up.
-        CollectionBounce, 
-        
-        // Toggled downscaling and rotational wiggle. Used to indicate a card is interactable during Edit Mode.
-        EditModeWiggle,
-        
-        // Brief size pulse. Used on a club collection bar to indicate the club is upgradeable.
-        UpgradablePulse,
-        
-        // Upward Bounce, Size Pulse, and Wiggle. Used when a card transitions into another card on the inventory.
-        CardRefreshPulse,
-        
-        // Particle effect performed around a quest tile when it is claimable.
-        QuestClaimableParticles
-        
-    }
-
     /// <summary>
     /// Holds a mapping from an EffectType to an FX Prefab or instantiated FXPackageController. If a controller is
     /// called for but does not exist, a new controller object will be instantiated and cached.
     /// </summary>
     private class UIObjectFXMappingInternal {
-        public readonly EffectType EffectType;
+        public readonly string EffectID;
         private readonly GameObject _prefab;
         private readonly Transform _transform;
         private FxPackageController _controller;
@@ -62,7 +31,7 @@ public class UIObjectFX : MonoBehaviour {
         }
 
         public UIObjectFXMappingInternal(UIObjectFXMapping mapping, Transform parentTransform) {
-            EffectType = mapping.EffectType;
+            EffectID = mapping.EffectID;
             _prefab = mapping.Prefab;
             _transform = parentTransform;
         }
@@ -82,20 +51,20 @@ public class UIObjectFX : MonoBehaviour {
         }
     }
 
-    public static void DoEffect(EffectType effectType, GameObject targetObject, float amplitude = 1f, float timeOffset = 0f) {
+    public static void DoEffect(string effectID, GameObject targetObject, float amplitude = 1f, float timeOffset = 0f) {
         if (!instance) return;
-        SetTarget(effectType, targetObject, out UIObjectFXMappingInternal effect);
+        SetTarget(effectID, targetObject, out UIObjectFXMappingInternal effect);
         effect.Controller.TriggerAll(amplitude);
     }
 
-    public static void ToggleEffect(EffectType effectType, GameObject targetObject, bool isOn, float amplitude = 1f,  float timeOffset = 0f) {
+    public static void ToggleEffect(string effectID, GameObject targetObject, bool isOn, float amplitude = 1f,  float timeOffset = 0f) {
         if (!instance) return;
-        SetTarget(effectType, targetObject, out UIObjectFXMappingInternal effect);
+        SetTarget(effectID, targetObject, out UIObjectFXMappingInternal effect);
         effect.Controller.ToggleAll(isOn, amplitude: amplitude, timeOffset: timeOffset);
     }
 
-    private static void SetTarget(EffectType effectType, GameObject targetObject, out UIObjectFXMappingInternal effect) {
-        effect = instance._mappings.FirstOrDefault(e => e.EffectType == effectType);
+    private static void SetTarget(string effectID, GameObject targetObject, out UIObjectFXMappingInternal effect) {
+        effect = instance._mappings.FirstOrDefault(e => e.EffectID == effectID);
         if (effect == null) {
             Debug.Log("Error in {typeof(UIObjectFX)}: no effect found with {typeof(EffectType)} \"{effectType.ToString()}\"");
             return;
