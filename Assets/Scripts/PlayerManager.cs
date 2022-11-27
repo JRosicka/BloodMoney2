@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour {
@@ -14,6 +15,7 @@ public class PlayerManager : MonoBehaviour {
     private List<PlayerInfo> _playerInfos = new List<PlayerInfo>();
 
     public PlayerManagerEffectActions EffectActions;
+    private PlayerManagerUpdateLoop _updateLoop;
 
     [Header("Game Data")] public GameData GameData;
 
@@ -25,6 +27,7 @@ public class PlayerManager : MonoBehaviour {
         PlayerDisplays[1].Initialize(player, GameData);
 
         EffectActions = new PlayerManagerEffectActions(this);
+        _updateLoop = new PlayerManagerUpdateLoop(this);
     }
     
 
@@ -47,6 +50,10 @@ public class PlayerManager : MonoBehaviour {
         
         _playerInfos.Add(newPlayer);
         return newPlayer;
+    }
+
+    private void Update() {
+        _updateLoop.DoUpdate();
     }
     
 }
