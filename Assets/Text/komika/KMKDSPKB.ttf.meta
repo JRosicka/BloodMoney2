@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8541a6cc95b44d249b18b8213dd2df84
+guid: a4131048c5a564840acd720e14a9a5d7
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -10,8 +10,7 @@ TrueTypeFontImporter:
   includeFontData: 1
   fontNames:
   - Komika Display Kaps
-  fallbackFontReferences:
-  - {fileID: 12800000, guid: a3ef99689cf9dc04293fede483b6a74c, type: 3}
+  fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cf0b52a72b7174b44836f322fd692d40
+guid: 0ca6336c9d6b0b6489737e5c7d95814c
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -11,7 +11,7 @@ TrueTypeFontImporter:
   fontNames:
   - Komika Display
   fallbackFontReferences:
-  - {fileID: 12800000, guid: 9d3b07427fa90fb459d722b0fa4609df, type: 3}
+  - {fileID: 12800000, guid: f8aaae973efb2284598341893d92b4c7, type: 3}
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1

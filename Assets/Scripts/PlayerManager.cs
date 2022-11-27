@@ -20,16 +20,20 @@ public class PlayerManager : MonoBehaviour {
         }
     }
 
-    public PlayerInfo GetPlayerInfo(PlayerID id) => _playerInfos.First(p => p.ID == id);
+    public PlayerInfo GetPlayerInfo(PlayerID id) =>_playerInfos.First(p => p.ID == id);
     
     public List<PlayerDisplay> PlayerDisplays;
     private List<PlayerInfo> _playerInfos = new List<PlayerInfo>();
 
+    [Header("Game Data")] public GameData GameData;
+
     public PlayerManagerEffectActions EffectActions;
     private PlayerManagerUpdateLoop _updateLoop;
 
-    [Header("Game Data")] public GameData GameData;
-
+    public event Action OnPlayersCreated;
+    [HideInInspector]
+    public bool PlayersCreated;
+    
     private void Start() {
         // Create Players
         PlayerInfo player = CreatePlayer(0);
@@ -39,6 +43,9 @@ public class PlayerManager : MonoBehaviour {
 
         EffectActions = new PlayerManagerEffectActions(this);
         _updateLoop = new PlayerManagerUpdateLoop(this);
+
+        PlayersCreated = true;
+        OnPlayersCreated?.Invoke();
     }
     
 
