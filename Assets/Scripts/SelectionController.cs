@@ -10,7 +10,7 @@ using UnityEngine.UI;
 /// The origin is at the top left corner, so X increases as selection moves to the right and Y increases as selection moves down. 
 /// </summary>
 public class SelectionController : MonoBehaviour {
-    public VerticalLayoutGroup ButtonGrid;
+    public List<HorizontalLayoutGroup> Rows;
     public PlayerManager.PlayerID ID;
     public float ReselectionCooldown;
 
@@ -50,8 +50,8 @@ public class SelectionController : MonoBehaviour {
     }
 
     private void SetupButtons() {
-        foreach (HorizontalLayoutGroup v in ButtonGrid.GetComponentsInChildren<HorizontalLayoutGroup>()) {
-            _buttonRows.Add(v.GetComponentsInChildren<GameButton>().ToList());
+        foreach (HorizontalLayoutGroup h in Rows) {
+            _buttonRows.Add(h.GetComponentsInChildren<GameButton>().ToList());
         }
     }
 
