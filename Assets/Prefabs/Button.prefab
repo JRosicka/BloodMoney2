@@ -345,6 +345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AbilityID: 
+  CurrencyIcon: {fileID: 4046207463226838211}
   SelectedImage_p1: {fileID: 3105491285246671062}
   SelectedImage_p2: {fileID: 8073116606054830700}
   CooldownImage_p1: {fileID: 4237028345665622291}
@@ -676,7 +677,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4b43395a52fef7f4da56d64f7ef29a37, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cd09d74fb325f74438f5ba1aa252ca9a, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1279,8 +1280,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -3, y: 3}
-  m_SizeDelta: {x: 10, y: 10}
+  m_AnchoredPosition: {x: -6, y: 6}
+  m_SizeDelta: {x: 16, y: 16}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &8193792954048908035
 CanvasRenderer:
@@ -1310,7 +1311,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e60718119cec31e4190849292fcde068, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cc02c05f5cf137848939f3399b48d0a0, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

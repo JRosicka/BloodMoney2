@@ -1,12 +1,14 @@
 using System;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GameButton : MonoBehaviour {
     public string AbilityID;
-    
-    [Header("References")]
+
+    [Header("References")] 
+    public Image CurrencyIcon;
     public Image SelectedImage_p1;
     public Image SelectedImage_p2;
     public RectTransform CooldownImage_p1;
@@ -52,14 +54,10 @@ public class GameButton : MonoBehaviour {
         CooldownText_p2.gameObject.SetActive(false);
 
         if (GameManager.Instance.PlayerManager.PlayersCreated) {
-            UpdateCostText(PlayerManager.PlayerID.P1);
-            UpdateCostText(PlayerManager.PlayerID.P2);
+            SetInitialInfo();
         } else {
             // We must not have created the players yet, but are just about to. Wait for that to happen. 
-            GameManager.Instance.PlayerManager.OnPlayersCreated += () => {
-                UpdateCostText(PlayerManager.PlayerID.P1);
-                UpdateCostText(PlayerManager.PlayerID.P2);
-            };
+            GameManager.Instance.PlayerManager.OnPlayersCreated += SetInitialInfo;
         }
     }
 
@@ -68,6 +66,18 @@ public class GameButton : MonoBehaviour {
         UpdateCooldownAnimation(ref _cooldownAnimation_p2);
     }
 
+    private void SetInitialInfo() {
+        // Set initial costs
+        UpdateCostText(PlayerManager.PlayerID.P1);
+        UpdateCostText(PlayerManager.PlayerID.P2);
+
+        // Set currency icon
+        if (AbilityID == "") return;
+        string currencyID = PlayerInfo(PlayerManager.PlayerID.P1).GetAbility(AbilityID).Data.CurrencyID;
+        CurrencyData data = GameManager.Instance.PlayerManager.GameData.Currencies.First(c => c.ID == currencyID);
+        CurrencyIcon.sprite = data.Sprite;
+    }
+    
     private void UpdateCostText(PlayerManager.PlayerID playerID) {
         if (AbilityID == "") return;
         
