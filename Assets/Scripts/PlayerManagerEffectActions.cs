@@ -23,7 +23,7 @@ public class PlayerManagerEffectActions {
     public void AddCurrency(PlayerManager.PlayerID playerID, CurrencyData currencyData, float addAmount) {
         PlayerInfo playerInfo = _manager.GetPlayerInfo(playerID);
         PlayerCurrency currency = playerInfo.Currencies[currencyData.ID];
-        currency.Amount = Mathf.Clamp(currency.Amount + addAmount, 0, currencyData.Max);
+        currency.Amount = Mathf.Clamp(currency.Amount + addAmount, 0, currencyData.Max > 0 ? currencyData.Max : Mathf.Infinity);
     }
 
     public void AddCurrencyDelta(PlayerManager.PlayerID playerID, CurrencyData currencyData, float addAmount) {
