@@ -7,7 +7,7 @@
 public class UIObjectFXInvoker : MonoBehaviour {
 
     public GameObject TargetObject;
-    public UIObjectFX.EffectType EffectType;
+    public string EffectID;
     public float EffectStrength = 1f;
 
     private void Start() {
@@ -17,7 +17,7 @@ public class UIObjectFXInvoker : MonoBehaviour {
     }
     
     public void InvokeEffect() {
-        UIObjectFX.DoEffect(EffectType, TargetObject, EffectStrength);
+        UIObjectFX.DoEffect(EffectID, TargetObject, EffectStrength);
     }
 
 }

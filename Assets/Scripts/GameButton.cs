@@ -9,6 +9,9 @@ public class GameButton : MonoBehaviour {
     public Image SelectedImage_p2;
     
     public void ToggleSelected(bool selected, PlayerManager.PlayerID playerID) {
+        
+        if (selected) UIObjectFX.DoEffect("Button Selected", gameObject);
+        
         switch(playerID){
             case PlayerManager.PlayerID.P1:
                 SelectedImage_p1.gameObject.SetActive(selected);

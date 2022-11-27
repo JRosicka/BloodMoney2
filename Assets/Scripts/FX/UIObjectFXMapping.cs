@@ -3,6 +3,6 @@ using UnityEngine;
 
 [Serializable]
 public class UIObjectFXMapping {
-    public UIObjectFX.EffectType EffectType;
+    public string EffectID;
     public GameObject Prefab;
 }
