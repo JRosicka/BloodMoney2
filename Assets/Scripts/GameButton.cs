@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class GameButton : MonoBehaviour {
-    public string AbilityID;
+    public AbilityData AbilityData;
 
     [Header("References")] 
     public Image CurrencyIcon;
@@ -39,7 +39,7 @@ public class GameButton : MonoBehaviour {
     }
     
     public void TryPushButton(PlayerManager.PlayerID playerID) {
-        if (PlayerInfo(playerID).TryUseAbility(AbilityID)) {
+        if (PlayerInfo(playerID).TryUseAbility(AbilityData)) {
             UpdateCostText(playerID);
             
             // TODO animate
@@ -70,24 +70,24 @@ public class GameButton : MonoBehaviour {
         // Set initial costs
         UpdateCostText(PlayerManager.PlayerID.P1);
         UpdateCostText(PlayerManager.PlayerID.P2);
+        
+        if (AbilityData == null) return;
 
         // Set currency icon
-        if (AbilityID == "") return;
-        AbilityData data = PlayerInfo(PlayerManager.PlayerID.P1).GetAbility(AbilityID).Data;
-        string currencyID = data.Currency.ID;
+        string currencyID = AbilityData.Currency.ID;
         CurrencyData currencyData = GameManager.Instance.PlayerManager.GameData.Currencies.First(c => c.ID == currencyID);
         CurrencyIcon.sprite = currencyData.Sprite;
-        AbilityIcon.sprite = data.AbilityIcon;
+        AbilityIcon.sprite = AbilityData.AbilityIcon;
         
         // Ability text
-        AbilityText.text = data.ID;
+        AbilityText.text = AbilityData.ID;
     }
     
     private void UpdateCostText(PlayerManager.PlayerID playerID) {
-        if (AbilityID == "") return;
+        if (AbilityData == null) return;
         
         TextMeshProUGUI text = playerID == PlayerManager.PlayerID.P1 ? Cost_p1 : Cost_p2;
-        text.text = PlayerInfo(playerID).GetAbility(AbilityID)
+        text.text = PlayerInfo(playerID).GetAbility(AbilityData)
             .CostToUse().ToString("N0");
     }
 
@@ -111,7 +111,7 @@ public class GameButton : MonoBehaviour {
 
         cdAnimation.StartTime = cdAnimation.CurrentTime = Time.time;
         cdAnimation.TargetEndTime = Time.time 
-            + PlayerInfo(playerID).GetAbility(AbilityID).Data.CooldownTime;
+            + AbilityData.CooldownTime;
 
         if (playerID == PlayerManager.PlayerID.P1) {
             _cooldownAnimation_p1 = cdAnimation;

@@ -597,6 +597,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4793414185450954631, guid: 6f38f17a8d8c8bc42a980dfb0bd0f266, type: 3}
+      propertyPath: AbilityData
+      value: 
+      objectReference: {fileID: 11400000, guid: e62612799cdfa17468b3d34d6c893f11, type: 2}
     - target: {fileID: 5758781415489351192, guid: 6f38f17a8d8c8bc42a980dfb0bd0f266, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1045,6 +1049,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4793414185450954631, guid: 6f38f17a8d8c8bc42a980dfb0bd0f266, type: 3}
+      propertyPath: AbilityData
+      value: 
+      objectReference: {fileID: 11400000, guid: f577beaafb236224eb7ef124046646f8, type: 2}
     - target: {fileID: 5758781415489351192, guid: 6f38f17a8d8c8bc42a980dfb0bd0f266, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1679,6 +1687,10 @@ PrefabInstance:
       propertyPath: AbilityID
       value: Money
       objectReference: {fileID: 0}
+    - target: {fileID: 4793414185450954631, guid: 6f38f17a8d8c8bc42a980dfb0bd0f266, type: 3}
+      propertyPath: AbilityData
+      value: 
+      objectReference: {fileID: 11400000, guid: f46b37b900ba3e74ba1355fe6b45a18c, type: 2}
     - target: {fileID: 5758781415489351192, guid: 6f38f17a8d8c8bc42a980dfb0bd0f266, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2409,6 +2421,10 @@ PrefabInstance:
       propertyPath: AbilityID
       value: Attack
       objectReference: {fileID: 0}
+    - target: {fileID: 4793414185450954631, guid: 6f38f17a8d8c8bc42a980dfb0bd0f266, type: 3}
+      propertyPath: AbilityData
+      value: 
+      objectReference: {fileID: 11400000, guid: e982f936c9f26f7478667b5420e05e31, type: 2}
     - target: {fileID: 5758781415489351192, guid: 6f38f17a8d8c8bc42a980dfb0bd0f266, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
