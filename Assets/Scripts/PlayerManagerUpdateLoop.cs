@@ -22,6 +22,11 @@ public class PlayerManagerUpdateLoop {
             0f, 
             player.HealthMax);
         
+        // Check for game over
+        if (player.HealthCurrent <= 0f) {
+            GameManager.Instance.GameOver(PlayerManager.OpponentOf(player.ID));
+        }
+        
         // Update Currencies
         foreach (string currencyID in player.Currencies.Keys) {
             player.Currencies[currencyID].Amount = Mathf.Clamp(
