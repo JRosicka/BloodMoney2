@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Attack Ability
   m_EditorClassIdentifier: 
   ID: Attack
-  CurrencyID: Gold
+  CurrencyID: Money
   CooldownTime: 5
   Tiers:
   - Cost: 0
