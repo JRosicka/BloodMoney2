@@ -19,7 +19,7 @@ public class PlayerManager : MonoBehaviour {
         
         // Create Players
         foreach (PlayerDisplay display in PlayerDisplays) {
-            display.PlayerInfo = CreatePlayer();
+            display.Initialize(CreatePlayer(), GameData);
         }
         
     }
@@ -29,7 +29,7 @@ public class PlayerManager : MonoBehaviour {
         newPlayer.HealthMax = newPlayer.HealthCurrent = GameData.PlayerStartingHealth;
         newPlayer.Currencies = new Dictionary<string, PlayerCurrency>();
         foreach (CurrencyData currency in GameData.Currencies) {
-            newPlayer.Currencies.Add(currency.ID, new PlayerCurrency(currency.ID));
+            newPlayer.Currencies.Add(currency.ID, new PlayerCurrency(currency));
         }
         return newPlayer;
     }
