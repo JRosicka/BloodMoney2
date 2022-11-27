@@ -10,12 +10,8 @@ using UnityEngine.UI;
 /// The origin is at the top left corner, so X increases as selection moves to the right and Y increases as selection moves down. 
 /// </summary>
 public class SelectionController : MonoBehaviour {
-    public enum PlayerID {
-        P1,
-        P2
-    }
     public VerticalLayoutGroup ButtonGrid;
-    public PlayerID ID;
+    public PlayerManager.PlayerID ID;
     public float ReselectionCooldown;
 
     public int XPos;
