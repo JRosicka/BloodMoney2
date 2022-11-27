@@ -6,6 +6,7 @@ public class PlayerInfo {
 
     public float HealthMax;
     public float HealthCurrent;
+    public float HealthDelta;
     public Dictionary<string, PlayerCurrency> Currencies;
     public List<Ability> Abilities;
 

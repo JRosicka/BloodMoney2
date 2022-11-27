@@ -13,6 +13,8 @@ public class PlayerManager : MonoBehaviour {
     public List<PlayerDisplay> PlayerDisplays;
     private List<PlayerInfo> _playerInfos = new List<PlayerInfo>();
 
+    public PlayerManagerEffectActions EffectActions;
+
     [Header("Game Data")] public GameData GameData;
 
     private void Start() {
@@ -21,6 +23,8 @@ public class PlayerManager : MonoBehaviour {
         PlayerDisplays[0].Initialize(player, GameData);
         player = CreatePlayer(1);
         PlayerDisplays[0].Initialize(player, GameData);
+
+        EffectActions = new PlayerManagerEffectActions(this);
     }
     
 
