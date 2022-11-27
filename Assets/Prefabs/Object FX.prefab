@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Controller: {fileID: 0}
   ToggleState: 0
-  PackageAnchor: {fileID: 0}
+  PackageAnchor: {fileID: 4725104055453349397}
   TriggerOnStart: 0
   ToggleOnStart: 0
   AutoOff: 0
