@@ -46,7 +46,7 @@ public class PlayerDisplay : MonoBehaviour {
 
     private void UpdateHealthDisplay() {
         HealthValueDisplay.SetValueNumerator(Mathf.CeilToInt(_playerInfo.HealthCurrent));
-        HealthValueDisplay.SetValueNumerator(Mathf.CeilToInt(_playerInfo.HealthMax));
+        HealthValueDisplay.SetValueDenominator(Mathf.CeilToInt(_playerInfo.HealthMax));
         HealthBar.SetPct(_playerInfo.HealthCurrent / _playerInfo.HealthMax);
     }
 
