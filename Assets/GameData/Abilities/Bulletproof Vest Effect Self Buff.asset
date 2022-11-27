@@ -9,15 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d88ec8eec4e457f82b1ac0ed0d0efd3, type: 3}
-  m_Name: Bulletproof Vest
+  m_Script: {fileID: 11500000, guid: 49f29dd5263b422c9538dabc694a2cbe, type: 3}
+  m_Name: Bulletproof Vest Effect Self Buff
   m_EditorClassIdentifier: 
-  ID: Bulletproof Vest
-  ArtSprite: {fileID: 0}
-  BackgroundSprite: {fileID: 0}
-  Duration: 5
-  StartEffects: []
-  Effects: []
-  EffectPeriod: 0.1
-  EndEffects: []
-  CausesGuard: 1
+  Buff: {fileID: 11400000, guid: e0c4d8ff7b3c53b439add688312067fc, type: 2}
