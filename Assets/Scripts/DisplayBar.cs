@@ -7,9 +7,13 @@ public class DisplayBar : MonoBehaviour {
 
     public RectTransform BarRT;
 
+    public Vector2 emptyScale;
+    public Vector2 fullScale;
+
     public void SetPct(float pct) {
         float clampPct = Mathf.Clamp01(pct);
-        BarRT.localScale = new Vector3(clampPct, 1f);
+        Vector2 lerpVec = Vector2.Lerp(emptyScale, fullScale, pct);
+        BarRT.localScale = new Vector3(lerpVec.x, lerpVec.y);
     }
 
 }

@@ -31,5 +31,9 @@ public class PlayerManagerEffectActions {
         PlayerCurrency currency = playerInfo.Currencies[currencyData.ID];
         currency.Delta = currency.Delta + addAmount;
     }
+
+    public void AddBuff(PlayerManager.PlayerID playerID, BuffData buff) {
+        
+    } 
     
 }
