@@ -42,9 +42,6 @@ public class UIObjectFX : MonoBehaviour {
 
     private void Awake() {
         instance = this;
-    }
-    
-    private void Start() {
         _mappings = new List<UIObjectFXMappingInternal>();
         foreach (UIObjectFXMapping mapping in EffectMappings) {
             _mappings.Add(new UIObjectFXMappingInternal(mapping, transform));
