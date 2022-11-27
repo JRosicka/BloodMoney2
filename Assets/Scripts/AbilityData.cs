@@ -6,6 +6,7 @@ using UnityEngine;
 public class AbilityData : ScriptableObject {
     public string ID;
     public string CurrencyID;
+    public float CooldownTime;
     public List<AbilityTier> Tiers;
 }
 

@@ -10,7 +10,7 @@ public class PlayerInfo {
     public Dictionary<string, PlayerCurrency> Currencies;
     public List<Ability> Abilities;
 
-    private Ability GetAbility(string id) => Abilities.First(a => a.Data.ID == id);
+    public Ability GetAbility(string id) => Abilities.First(a => a.Data.ID == id);
     
     public bool TryUseAbility(string abilityID) {
         Ability ability = GetAbility(abilityID);
