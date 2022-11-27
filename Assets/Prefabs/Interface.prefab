@@ -544,6 +544,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6465215642677853073, guid: 6f38f17a8d8c8bc42a980dfb0bd0f266, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cd09d74fb325f74438f5ba1aa252ca9a, type: 3}
     - target: {fileID: 6740794519781997776, guid: 6f38f17a8d8c8bc42a980dfb0bd0f266, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -709,7 +713,7 @@ PrefabInstance:
     - target: {fileID: 6465215642677853073, guid: 6f38f17a8d8c8bc42a980dfb0bd0f266, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: e915aa4615db2644b9c9501ee55b2965, type: 3}
+      objectReference: {fileID: 21300000, guid: a6d7d4997ad6d10449db259baefd97a2, type: 3}
     - target: {fileID: 6740794519781997776, guid: 6f38f17a8d8c8bc42a980dfb0bd0f266, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -823,7 +827,7 @@ PrefabInstance:
     - target: {fileID: 6465215642677853073, guid: 6f38f17a8d8c8bc42a980dfb0bd0f266, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: e915aa4615db2644b9c9501ee55b2965, type: 3}
+      objectReference: {fileID: 21300000, guid: a6d7d4997ad6d10449db259baefd97a2, type: 3}
     - target: {fileID: 6740794519781997776, guid: 6f38f17a8d8c8bc42a980dfb0bd0f266, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1004,10 +1008,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button
       objectReference: {fileID: 0}
+    - target: {fileID: 4310397219167799883, guid: 6f38f17a8d8c8bc42a980dfb0bd0f266, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4793414185450954631, guid: 6f38f17a8d8c8bc42a980dfb0bd0f266, type: 3}
       propertyPath: AbilityID
       value: Money
       objectReference: {fileID: 0}
+    - target: {fileID: 6465215642677853073, guid: 6f38f17a8d8c8bc42a980dfb0bd0f266, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cd09d74fb325f74438f5ba1aa252ca9a, type: 3}
     - target: {fileID: 6740794519781997776, guid: 6f38f17a8d8c8bc42a980dfb0bd0f266, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1236,6 +1248,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6465215642677853073, guid: 6f38f17a8d8c8bc42a980dfb0bd0f266, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cd09d74fb325f74438f5ba1aa252ca9a, type: 3}
     - target: {fileID: 6740794519781997776, guid: 6f38f17a8d8c8bc42a980dfb0bd0f266, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1405,7 +1421,7 @@ PrefabInstance:
     - target: {fileID: 6465215642677853073, guid: 6f38f17a8d8c8bc42a980dfb0bd0f266, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: e915aa4615db2644b9c9501ee55b2965, type: 3}
+      objectReference: {fileID: 21300000, guid: a6d7d4997ad6d10449db259baefd97a2, type: 3}
     - target: {fileID: 6740794519781997776, guid: 6f38f17a8d8c8bc42a980dfb0bd0f266, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
