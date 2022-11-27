@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebd14371d78b43cda1bc85bfccf50aa2, type: 3}
   m_Name: Bulletproof Vest Ability
   m_EditorClassIdentifier: 
-  ID: 
-  CurrencyID: 
-  CooldownTime: 0
-  Tiers: []
+  ID: Bulletproof Vest
+  AbilityIcon: {fileID: 21300000, guid: 5fa3da18e4ba06940a7063ae0d96924c, type: 3}
+  CurrencyID: Money
+  CooldownTime: 5
+  Tiers:
+  - Cost: 10
+    Effects:
+    - EffectAmount: 1
+      Effect: {fileID: 11400000, guid: c7733c0a8b265274bb82fea902a0d429, type: 2}

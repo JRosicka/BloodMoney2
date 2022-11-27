@@ -9,6 +9,7 @@ public class GameButton : MonoBehaviour {
 
     [Header("References")] 
     public Image CurrencyIcon;
+    public Image AbilityIcon;
     public GameObject SelectedImage_p1;
     public GameObject SelectedImage_p2;
     public RectTransform CooldownImage_p1;
@@ -76,6 +77,7 @@ public class GameButton : MonoBehaviour {
         string currencyID = data.CurrencyID;
         CurrencyData currencyData = GameManager.Instance.PlayerManager.GameData.Currencies.First(c => c.ID == currencyID);
         CurrencyIcon.sprite = currencyData.Sprite;
+        AbilityIcon.sprite = data.AbilityIcon;
         
         // Ability text
         AbilityText.text = data.ID;
