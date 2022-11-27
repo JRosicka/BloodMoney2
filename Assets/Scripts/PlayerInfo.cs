@@ -76,6 +76,9 @@ public class PlayerInfo {
     }
 
     public void TakeDamage(float damageAmount) {
+        if (HasGuard) {
+            damageAmount *= 0.25f;
+        }
         HealthCurrent = Mathf.Clamp(HealthCurrent - damageAmount, 0, HealthMax);
     }
 

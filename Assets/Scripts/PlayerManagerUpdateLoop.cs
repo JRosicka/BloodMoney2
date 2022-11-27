@@ -36,9 +36,9 @@ public class PlayerManagerUpdateLoop {
         }
         
         // Update Buffs (remove any that have expired)
-        foreach (PlayerBuff buff in player.ActiveBuffs) {
-            if (buff.TimeLeft() <= 0f) {
-                player.DestroyBuff(buff.Data);
+        for (int i = player.ActiveBuffs.Count - 1; i >= 0; i--) {
+            if (player.ActiveBuffs[i].TimeLeft() <= 0f) {
+                player.DestroyBuff(player.ActiveBuffs[i].Data);
             }
         }
     }

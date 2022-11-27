@@ -26,6 +26,7 @@ public class PlayerDisplay : MonoBehaviour {
     public void Initialize(PlayerInfo playerInfo, GameData gameData) {
         _playerInfo = playerInfo;
         CurrencyDisplays = new Dictionary<string, NumberValueDisplay>();
+        BuffDisplays = new Dictionary<string, BuffDisplay>();
         
         // Initialize Health Display
         UpdateHealthDisplay();
@@ -46,6 +47,7 @@ public class PlayerDisplay : MonoBehaviour {
         
         // Watch PlayerInfo Delegates
         _playerInfo.OnBuffCreated += OnBuffCreated;
+        _playerInfo.OnBuffDestroyed += OnBuffDestroyed;
     }
     
     // UPDATE LOOP
@@ -60,7 +62,7 @@ public class PlayerDisplay : MonoBehaviour {
         }
         
         // Update Buff Display
-        foreach (string buffID in CurrencyDisplays.Keys) {
+        foreach (string buffID in BuffDisplays.Keys) {
             UpdateBuffDisplay(buffID);
         }
         
@@ -99,7 +101,7 @@ public class PlayerDisplay : MonoBehaviour {
             Debug.Log("No displayer found for " + playerBuff.Data.ID);
             return;;
         }
-        Destroy(BuffDisplays[playerBuff.Data.ID]);
+        Destroy(BuffDisplays[playerBuff.Data.ID].gameObject);
         BuffDisplays.Remove(playerBuff.Data.ID);
     }
     
