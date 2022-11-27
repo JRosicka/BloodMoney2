@@ -23,10 +23,8 @@ public class Ability {
     }
 
     public void UseAbility() {
-        AbilityTier tier = Data.Tiers[_currentTier];
-        
         // Use
-        Data.Effects.ForEach(e => e.DoEffect(_playerID, tier.EffectAmount));
+        Data.Tiers[_currentTier].Effects.ForEach(e => e.Effect.DoEffect(_playerID, e.EffectAmount));
         
         // Increment
         if (_currentTier < Data.Tiers.Count - 1) {

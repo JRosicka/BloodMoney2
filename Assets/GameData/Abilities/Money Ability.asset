@@ -16,10 +16,16 @@ MonoBehaviour:
   CurrencyID: Silver
   Tiers:
   - Cost: 0
-    EffectAmount: 10
+    Effects:
+    - EffectAmount: 20
+      Effect: {fileID: 11400000, guid: 299ab0f73aef7c44db7019fc51648111, type: 2}
   - Cost: 0
-    EffectAmount: 20
+    Effects:
+    - EffectAmount: 50
+      Effect: {fileID: 11400000, guid: 299ab0f73aef7c44db7019fc51648111, type: 2}
+    - EffectAmount: 50
+      Effect: {fileID: 11400000, guid: 6033b4441b84d834b840a50ff63668cb, type: 2}
   - Cost: 1
-    EffectAmount: 30
-  Effects:
-  - {fileID: 11400000, guid: 6033b4441b84d834b840a50ff63668cb, type: 2}
+    Effects:
+    - EffectAmount: 50
+      Effect: {fileID: 11400000, guid: 299ab0f73aef7c44db7019fc51648111, type: 2}

@@ -4,5 +4,6 @@
 public class AttackAbilityEffect : AbstractAbilityEffect {
     public override void DoEffect(PlayerManager.PlayerID playerID, int effectAmount) {
         Debug.Log("Attack!");
+        GameManager.Instance.PlayerManager.EffectActions.AddHealth(playerID, -effectAmount);
     }
 }

@@ -7,12 +7,16 @@ public class AbilityData : ScriptableObject {
     public string ID;
     public string CurrencyID;
     public List<AbilityTier> Tiers;
-    public List<AbstractAbilityEffect> Effects;
-    
 }
 
 [Serializable]
 public struct AbilityTier {
     public int Cost;
+    public List<NumberedAbilityEffect> Effects;
+}
+
+[Serializable]
+public struct NumberedAbilityEffect {
     public int EffectAmount;
+    public AbstractAbilityEffect Effect;
 }
