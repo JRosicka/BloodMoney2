@@ -41,6 +41,7 @@ public class SelectionController : MonoBehaviour {
     }
     
     private void Update() {
+        if (GameManager.Instance.GameOverTriggered) return;
         UpdateNavigation();
         if (_player.GetButtonDown("Confirm")) {
             PressSelectedButton();

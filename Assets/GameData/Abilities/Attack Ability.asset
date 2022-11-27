@@ -17,11 +17,13 @@ MonoBehaviour:
   Tiers:
   - Cost: 0
     Effects:
-    - EffectAmount: 0
+    - EffectAmount: 5
       Effect: {fileID: 11400000, guid: b8ff0a827c31a94488a87a152bf43e8e, type: 2}
   - Cost: 10
-    Effects: []
+    Effects:
+    - EffectAmount: 10
+      Effect: {fileID: 11400000, guid: b8ff0a827c31a94488a87a152bf43e8e, type: 2}
   - Cost: 10
     Effects:
-    - EffectAmount: 0
+    - EffectAmount: 23
       Effect: {fileID: 11400000, guid: b8ff0a827c31a94488a87a152bf43e8e, type: 2}
