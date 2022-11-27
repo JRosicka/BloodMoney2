@@ -22,7 +22,7 @@ public class PlayerManager : MonoBehaviour {
         PlayerInfo player = CreatePlayer(0);
         PlayerDisplays[0].Initialize(player, GameData);
         player = CreatePlayer(1);
-        PlayerDisplays[0].Initialize(player, GameData);
+        PlayerDisplays[1].Initialize(player, GameData);
 
         EffectActions = new PlayerManagerEffectActions(this);
     }
