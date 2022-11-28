@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour {
+    
     public enum PlayerID {
         P1,
         P2
@@ -27,7 +28,9 @@ public class PlayerManager : MonoBehaviour {
 
     public List<SelectionController> PlayerSelectionControllers;
 
-    [Header("Game Data")] public GameData GameData;
+    [Header("Game Data")]
+    public GameData GameData;
+    public CurrencyData BloodCurrency;
 
     public PlayerManagerEffectActions EffectActions;
     private PlayerManagerUpdateLoop _updateLoop;
@@ -53,6 +56,7 @@ public class PlayerManager : MonoBehaviour {
 
     private PlayerInfo CreatePlayer(int playerIndex) {
         PlayerInfo newPlayer = new PlayerInfo();
+        newPlayer.PlayerManager = this;
         newPlayer.ID = (PlayerID)playerIndex;
         newPlayer.HealthMax = newPlayer.HealthCurrent = GameData.PlayerStartingHealth;
         

@@ -3,6 +3,8 @@ using System.Linq;
 using UnityEngine;
 
 public class PlayerInfo {
+
+    public PlayerManager PlayerManager;
     public PlayerManager.PlayerID ID;
 
     public float HealthMax;
@@ -45,8 +47,8 @@ public class PlayerInfo {
     }
 
     public Ability GetSelectedAbility() {
-        string abilityID = SelectionController.SelectedButton.AbilityID;
-        return GetAbility(abilityID);
+        AbilityData abilityData = SelectionController.SelectedButton.AbilityData;
+        return GetAbility(abilityData);
     }
     
     public void AddBuff(BuffData buff) {
@@ -86,7 +88,10 @@ public class PlayerInfo {
         if (HasGuard) {
             damageAmount *= 0.25f;
         }
+
+        float healthBefore = HealthCurrent;
         HealthCurrent = Mathf.Clamp(HealthCurrent - damageAmount, 0, HealthMax);
+        PlayerManager.EffectActions.AddCurrency(PlayerManager.OpponentOf(ID), PlayerManager.BloodCurrency, healthBefore - HealthCurrent);
     }
 
     public void Heal(float healAmount) {

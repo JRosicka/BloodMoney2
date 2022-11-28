@@ -54,8 +54,8 @@ public class FxShakeObject : FxPackage {
 
 	public override void Trigger (GameObject newAnchor = null, float amplitude = 1, float timeOffset = 0f) {
 		base.Trigger(newAnchor, amplitude, timeOffset);
-		applier.SetShakeFactor(SfxId, ValueCurve.Evaluate(0F) * TranslationMultiplier * amplitude, PerlinSpeed, DecayRate, timeOffset);
-		rotApplier.SetShakeFactor(SfxId, ValueCurve.Evaluate(0F) * RotationMultiplier * amplitude, PerlinSpeed, DecayRate, timeOffset);
+		applier.SetShakeFactor(SfxId, ValueCurve.Evaluate(0F) * TranslationMultiplier * amplitude, PerlinSpeed, DecayRate);
+		rotApplier.SetShakeFactor(SfxId, ValueCurve.Evaluate(0F) * RotationMultiplier * amplitude, PerlinSpeed, DecayRate);
 	}
 
 }

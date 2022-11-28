@@ -46,6 +46,7 @@ public class GameButton : MonoBehaviour {
             StartCooldownAnimation(playerID);
         } else {
             // TODO animate
+            UIObjectFX.DoEffect("Purchase Failure", gameObject);
         }
     }
 
