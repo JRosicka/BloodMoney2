@@ -23,11 +23,11 @@ public class PlayerInfo {
     public event BuffCreatedDelegate OnBuffDestroyed;
     
 
-    public Ability GetAbility(string id) => Abilities.First(a => a.Data.ID == id);
+    public Ability GetAbility(AbilityData data) => Abilities.FirstOrDefault(a => a.Data == data);
     
-    public bool TryUseAbility(string abilityID) {
+    public bool TryUseAbility(AbilityData abilityID) {
         Ability ability = GetAbility(abilityID);
-        if (!CanUseAbility(ability)) return false;
+        if (ability == null || !CanUseAbility(ability)) return false;
         
         // Buy it
         Currencies[ability.Data.Currency.ID].Spend(ability.CostToUse());
