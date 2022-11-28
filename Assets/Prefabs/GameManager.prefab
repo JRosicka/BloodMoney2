@@ -49,7 +49,7 @@ MonoBehaviour:
   - {fileID: 0}
   PlayerSelectionControllers: []
   GameData: {fileID: 11400000, guid: e6634c64b077e4b42809f0369b81e369, type: 2}
-  BloodCurrency: {fileID: 0}
+  BloodCurrency: {fileID: 11400000, guid: ca9ae07813dc40942bde624c2ce35288, type: 2}
   PlayersCreated: 0
 --- !u!1 &4967991263598169615
 GameObject:
