@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &55272039 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8896141634373322968, guid: 73e8c76dc59357a41bd3221cedd1a70b, type: 3}
+  m_PrefabInstance: {fileID: 215936008}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ea31c72894ea1247b759f743eaf93d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &124422359
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -180,6 +191,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb1f0632f61bd254da5e030d3637dee1, type: 3}
+--- !u!114 &151786608 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3533529089259013562, guid: 73e8c76dc59357a41bd3221cedd1a70b, type: 3}
+  m_PrefabInstance: {fileID: 215936008}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ea31c72894ea1247b759f743eaf93d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &160014928 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6151805499986628237, guid: 73e8c76dc59357a41bd3221cedd1a70b, type: 3}
@@ -2482,6 +2504,18 @@ PrefabInstance:
       propertyPath: PlayerDisplays.Array.data[1]
       value: 
       objectReference: {fileID: 348734563}
+    - target: {fileID: 4967991263454690340, guid: 3fde71dd5ab46714d8de0ee1719dac41, type: 3}
+      propertyPath: PlayerSelectionControllers.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4967991263454690340, guid: 3fde71dd5ab46714d8de0ee1719dac41, type: 3}
+      propertyPath: PlayerSelectionControllers.Array.data[0]
+      value: 
+      objectReference: {fileID: 55272039}
+    - target: {fileID: 4967991263454690340, guid: 3fde71dd5ab46714d8de0ee1719dac41, type: 3}
+      propertyPath: PlayerSelectionControllers.Array.data[1]
+      value: 
+      objectReference: {fileID: 151786608}
     - target: {fileID: 4967991263598169608, guid: 3fde71dd5ab46714d8de0ee1719dac41, type: 3}
       propertyPath: GameOverText
       value: 
