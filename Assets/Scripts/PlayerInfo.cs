@@ -45,7 +45,7 @@ public class PlayerInfo {
     }
 
     public Ability GetSelectedAbility() {
-        string abilityID = SelectionController.SelectedButton.AbilityID;
+        AbilityData abilityID = SelectionController.SelectedButton.AbilityData;
         return GetAbility(abilityID);
     }
     
