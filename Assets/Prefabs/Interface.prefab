@@ -120,6 +120,24 @@ MonoBehaviour:
   - {fileID: 6729213493627384763}
   - {fileID: 5016421942611031569}
   ID: 0
+  MoveSound:
+    soundKey: 
+    soundUsed: {fileID: 5962833324647636924, guid: 71b61e0a6d1fc974ca3ccc865f69ee14, type: 3}
+    priority: 200
+    volume: 0.2
+    pitch: 1
+    pitchVariation: 0
+    autoFadeRate: 0
+    autoFades: 0
+  ButtonFailureSound:
+    soundKey: 
+    soundUsed: {fileID: 5962833324647636924, guid: 759dad11571c86345b161b2a50dc3a83, type: 3}
+    priority: 150
+    volume: 0.25
+    pitch: 1
+    pitchVariation: 0
+    autoFadeRate: 0
+    autoFades: 0
   ReselectionCooldown: 0.2
   XPos: 0
   YPos: 0
@@ -243,6 +261,24 @@ MonoBehaviour:
   - {fileID: 6729213493627384763}
   - {fileID: 5016421942611031569}
   ID: 1
+  MoveSound:
+    soundKey: 
+    soundUsed: {fileID: 5962833324647636924, guid: 71b61e0a6d1fc974ca3ccc865f69ee14, type: 3}
+    priority: 200
+    volume: 0.2
+    pitch: 1
+    pitchVariation: 0
+    autoFadeRate: 0
+    autoFades: 0
+  ButtonFailureSound:
+    soundKey: 
+    soundUsed: {fileID: 5962833324647636924, guid: 759dad11571c86345b161b2a50dc3a83, type: 3}
+    priority: 150
+    volume: 0.25
+    pitch: 1
+    pitchVariation: 0
+    autoFadeRate: 0
+    autoFades: 0
   ReselectionCooldown: 0.2
   XPos: 0
   YPos: 0

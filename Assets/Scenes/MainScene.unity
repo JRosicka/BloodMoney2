@@ -2093,7 +2093,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerManager: {fileID: 1317523248}
+  SoundManager: {fileID: 2135318675}
   GameOverText: {fileID: 1478419724}
+  GameOverSound:
+    soundKey: 
+    soundUsed: {fileID: 5962833324647636924, guid: 5db8a47b707f9da4b936d410970ff540, type: 3}
+    priority: 256
+    volume: 1
+    pitch: 1
+    pitchVariation: 0.2
+    autoFadeRate: 0
+    autoFades: 0
   GameOverTriggered: 0
 --- !u!4 &1441889565
 Transform:
@@ -2108,6 +2118,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1317523249}
+  - {fileID: 2135318676}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2564,3 +2575,47 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1177090966420477178, guid: 45d70397b2ee469479bc2d039778b84a, type: 3}
   m_PrefabInstance: {fileID: 2133640715}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2135318674
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2135318676}
+  - component: {fileID: 2135318675}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2135318675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2135318674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed1326a372126bf44a9825a630e34c73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &2135318676
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2135318674}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1441889565}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

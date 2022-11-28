@@ -479,7 +479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 999fa224622eef44eaafd774114ab5a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AbilityID: 
+  AbilityData: {fileID: 0}
   CurrencyIcon: {fileID: 4046207463226838211}
   AbilityIcon: {fileID: 7617013518296792487}
   SelectedImage_p1: {fileID: 4063502432467390496}
@@ -491,6 +491,15 @@ MonoBehaviour:
   Cost_p1: {fileID: 4968302188179958446}
   Cost_p2: {fileID: 5953636230751355694}
   AbilityText: {fileID: 3866491004916013098}
+  ButtonFailureSound:
+    soundKey: 
+    soundUsed: {fileID: 5962833324647636924, guid: 759dad11571c86345b161b2a50dc3a83, type: 3}
+    priority: 150
+    volume: 0.25
+    pitch: 1
+    pitchVariation: 0
+    autoFadeRate: 0
+    autoFades: 0
 --- !u!222 &1552996384030762260
 CanvasRenderer:
   m_ObjectHideFlags: 0

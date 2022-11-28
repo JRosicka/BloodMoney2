@@ -6,10 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
     public PlayerManager PlayerManager;
+    public SoundManager SoundManager;
+    
+    [Header("Game Over")]
     public TextMeshProUGUI GameOverText;
+    public SoundCall GameOverSound;
     
     public static GameManager Instance;
 
+    [HideInInspector]
     public bool GameOverTriggered;
     private void Awake() {
         if (Instance != null) {
@@ -27,6 +32,8 @@ public class GameManager : MonoBehaviour {
 
         GameOverText.text = $"GAME OVER\nWinner: Player {(int)winner + 1}";
         GameOverText.gameObject.SetActive(true);
+        SoundManager.thisSoundManager.PlaySound(GameOverSound, gameObject);
+        
         Time.timeScale = 0;
 
         StartCoroutine(ResetGame());

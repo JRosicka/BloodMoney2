@@ -12,6 +12,8 @@ using UnityEngine.UI;
 public class SelectionController : MonoBehaviour {
     public List<HorizontalLayoutGroup> Rows;
     public PlayerManager.PlayerID ID;
+    public SoundCall MoveSound;
+
     public float ReselectionCooldown;
 
     public int XPos;
@@ -29,8 +31,6 @@ public class SelectionController : MonoBehaviour {
 
     private GameButton SelectedButton => _buttonRows[YPos][XPos];
     
-    // TODO button move sounds
-
     // Start is called before the first frame update
     private void Start() {
         _player = ReInput.players.GetPlayer((int)ID);
@@ -55,6 +55,10 @@ public class SelectionController : MonoBehaviour {
         }
     }
 
+    private void PlayButtonMoveSound() {
+        SoundManager.thisSoundManager.PlaySound(MoveSound, gameObject);
+    }
+    
     #region Navigation
 
     private void UpdateNavigation() {
@@ -104,28 +108,28 @@ public class SelectionController : MonoBehaviour {
     private void MoveLeft() {
         if (XPos <= 0) return;
         XPos--;
-        // TODO move sound
+        PlayButtonMoveSound();
         ResetSelection();
     }
 
     private void MoveRight() {
         if (XPos >= _buttonRows[YPos].Count - 1) return;
         XPos++;
-        // TODO move sound
+        PlayButtonMoveSound();
         ResetSelection();
     }
 
     private void MoveDown() {
         if (YPos >= _buttonRows.Count) return;
         YPos++;
-        // TODO move sound
+        PlayButtonMoveSound();
         ResetSelection();
     }
 
     private void MoveUp() {
         if (YPos <= 0) return;
         YPos--;
-        // TODO move sound
+        PlayButtonMoveSound();
         ResetSelection();
     }
     
