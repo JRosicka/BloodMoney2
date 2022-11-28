@@ -51,6 +51,10 @@ public class PlayerDisplay : MonoBehaviour {
         // Watch PlayerInfo Delegates
         _playerInfo.OnBuffCreated += OnBuffCreated;
         _playerInfo.OnBuffDestroyed += OnBuffDestroyed;
+        
+        // Watch Ability Selection Delegate
+        _playerInfo.SelectionController.OnAbilityUpdated += RefreshAbilityInfo;
+
     }
     
     // UPDATE LOOP
@@ -102,11 +106,15 @@ public class PlayerDisplay : MonoBehaviour {
     private void OnBuffDestroyed(PlayerBuff playerBuff) {
         if (!BuffDisplays.ContainsKey(playerBuff.Data.ID)) {
             Debug.Log("No displayer found for " + playerBuff.Data.ID);
-            return;;
+            return;
         }
         Destroy(BuffDisplays[playerBuff.Data.ID].gameObject);
         BuffDisplays.Remove(playerBuff.Data.ID);
     }
-    
+
+    private void RefreshAbilityInfo() {
+        Ability selectedAbility = _playerInfo.GetSelectedAbility();
+        AbilityInfoPanel.SetAbility(selectedAbility);
+    }
 
 }

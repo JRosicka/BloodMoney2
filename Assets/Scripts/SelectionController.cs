@@ -27,7 +27,10 @@ public class SelectionController : MonoBehaviour {
     private float _reselectTimer;
     private Vector2 _lastInputVector;
 
-    private GameButton SelectedButton => _buttonRows[YPos][XPos];
+    public delegate void SelectionChanged();
+    public event SelectionChanged OnAbilityUpdated;
+
+    public GameButton SelectedButton => _buttonRows[YPos][XPos];
     
     // TODO button move sounds
 
@@ -144,6 +147,7 @@ public class SelectionController : MonoBehaviour {
                 }
             }
         }
+        if (OnAbilityUpdated != null) OnAbilityUpdated();
     }
 
     #endregion
@@ -154,6 +158,7 @@ public class SelectionController : MonoBehaviour {
 
     private void PressSelectedButton() {
         SelectedButton.TryPushButton(ID);
+        if (OnAbilityUpdated != null) OnAbilityUpdated();
     }
 
 }

@@ -9,15 +9,15 @@ public class AbilityData : ScriptableObject {
     public CurrencyData Currency;
     public float CooldownTime;
     public List<AbilityTier> Tiers;
-
-    [TextArea(3, 6)]
-    public string DescriptionString;
 }
 
 [Serializable]
 public struct AbilityTier {
     public int Cost;
     public List<NumberedAbilityEffect> Effects;
+
+    [TextArea(3, 6)]
+    public string DescriptionString;
 }
 
 [Serializable]

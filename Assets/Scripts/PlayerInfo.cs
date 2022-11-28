@@ -11,6 +11,8 @@ public class PlayerInfo {
     public Dictionary<string, PlayerCurrency> Currencies;
     public List<Ability> Abilities;
 
+    // Selection
+    public SelectionController SelectionController;
     
     // Buffs
     public List<PlayerBuff> ActiveBuffs = new List<PlayerBuff>();
@@ -42,6 +44,11 @@ public class PlayerInfo {
         return ability.CostToUse() <= Currencies[ability.Data.Currency.ID].Amount;
     }
 
+    public Ability GetSelectedAbility() {
+        string abilityID = SelectionController.SelectedButton.AbilityID;
+        return GetAbility(abilityID);
+    }
+    
     public void AddBuff(BuffData buff) {
         PlayerBuff existingBuff = GrabExistingBuff(buff);
         if (existingBuff != null) {

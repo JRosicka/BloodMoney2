@@ -26,6 +26,10 @@ public class Ability {
         return Data.Tiers[_currentTier].Cost;
     }
 
+    public string DescriptionAtCurrentTier() {
+        return Data.Tiers[_currentTier].DescriptionString;
+    }
+
     public void UseAbility() {
         // Use
         Data.Tiers[_currentTier].Effects.ForEach(e => e.Effect.DoEffect(_playerID, e.EffectAmount));
