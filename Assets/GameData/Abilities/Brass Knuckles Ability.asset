@@ -21,56 +21,69 @@ MonoBehaviour:
     Effects:
     - EffectAmount: 10
       Effect: {fileID: 11400000, guid: b8ff0a827c31a94488a87a152bf43e8e, type: 2}
+    DescriptionString: Deals {{10}} damage to your opponent.
   - Cost: 33
     Effects:
     - EffectAmount: 10
       Effect: {fileID: 11400000, guid: b8ff0a827c31a94488a87a152bf43e8e, type: 2}
+    DescriptionString: Deals {{10}} damage to your opponent.
   - Cost: 45
     Effects:
     - EffectAmount: 10
       Effect: {fileID: 11400000, guid: b8ff0a827c31a94488a87a152bf43e8e, type: 2}
+    DescriptionString: Deals {{10}} damage to your opponent.
   - Cost: 59
     Effects:
     - EffectAmount: 10
       Effect: {fileID: 11400000, guid: b8ff0a827c31a94488a87a152bf43e8e, type: 2}
+    DescriptionString: Deals {{10}} damage to your opponent.
   - Cost: 79
     Effects:
     - EffectAmount: 10
       Effect: {fileID: 11400000, guid: b8ff0a827c31a94488a87a152bf43e8e, type: 2}
+    DescriptionString: Deals {{10}} damage to your opponent.
   - Cost: 105
     Effects:
     - EffectAmount: 10
       Effect: {fileID: 11400000, guid: b8ff0a827c31a94488a87a152bf43e8e, type: 2}
+    DescriptionString: Deals {{10}} damage to your opponent.
   - Cost: 139
     Effects:
     - EffectAmount: 10
       Effect: {fileID: 11400000, guid: b8ff0a827c31a94488a87a152bf43e8e, type: 2}
+    DescriptionString: Deals {{10}} damage to your opponent.
   - Cost: 185
     Effects:
     - EffectAmount: 10
       Effect: {fileID: 11400000, guid: b8ff0a827c31a94488a87a152bf43e8e, type: 2}
+    DescriptionString: Deals {{10}} damage to your opponent.
   - Cost: 145
     Effects:
     - EffectAmount: 10
       Effect: {fileID: 11400000, guid: b8ff0a827c31a94488a87a152bf43e8e, type: 2}
+    DescriptionString: Deals {{10}} damage to your opponent.
   - Cost: 326
     Effects:
     - EffectAmount: 10
       Effect: {fileID: 11400000, guid: b8ff0a827c31a94488a87a152bf43e8e, type: 2}
+    DescriptionString: Deals {{10}} damage to your opponent.
   - Cost: 433
     Effects:
     - EffectAmount: 10
       Effect: {fileID: 11400000, guid: b8ff0a827c31a94488a87a152bf43e8e, type: 2}
+    DescriptionString: Deals {{10}} damage to your opponent.
   - Cost: 576
     Effects:
     - EffectAmount: 10
       Effect: {fileID: 11400000, guid: b8ff0a827c31a94488a87a152bf43e8e, type: 2}
+    DescriptionString: Deals {{10}} damage to your opponent.
   - Cost: 766
     Effects:
     - EffectAmount: 10
       Effect: {fileID: 11400000, guid: b8ff0a827c31a94488a87a152bf43e8e, type: 2}
+    DescriptionString: Deals {{10}} damage to your opponent.
   - Cost: 1000
     Effects:
     - EffectAmount: 10
       Effect: {fileID: 11400000, guid: b8ff0a827c31a94488a87a152bf43e8e, type: 2}
-  DescriptionString: 
+    DescriptionString: Deals {{10}} damage to your opponent.

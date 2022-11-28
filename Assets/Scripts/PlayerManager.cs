@@ -25,6 +25,8 @@ public class PlayerManager : MonoBehaviour {
     public List<PlayerDisplay> PlayerDisplays;
     private List<PlayerInfo> _playerInfos = new List<PlayerInfo>();
 
+    public List<SelectionController> PlayerSelectionControllers;
+
     [Header("Game Data")] public GameData GameData;
 
     public PlayerManagerEffectActions EffectActions;
@@ -65,6 +67,9 @@ public class PlayerManager : MonoBehaviour {
         foreach (AbilityData ability in GameData.Abilities) {
             newPlayer.Abilities.Add(new Ability(ability, (PlayerID)playerIndex));
         }
+        
+        // Selection Controller
+        newPlayer.SelectionController = PlayerSelectionControllers[_playerInfos.Count];
         
         _playerInfos.Add(newPlayer);
         return newPlayer;
