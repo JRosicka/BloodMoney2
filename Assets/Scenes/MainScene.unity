@@ -2497,6 +2497,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4967991263454690340, guid: 3fde71dd5ab46714d8de0ee1719dac41, type: 3}
+      propertyPath: BloodCurrency
+      value: 
+      objectReference: {fileID: 11400000, guid: ca9ae07813dc40942bde624c2ce35288, type: 2}
+    - target: {fileID: 4967991263454690340, guid: 3fde71dd5ab46714d8de0ee1719dac41, type: 3}
       propertyPath: PlayerDisplays.Array.data[0]
       value: 
       objectReference: {fileID: 2133640716}
