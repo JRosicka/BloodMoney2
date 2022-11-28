@@ -19,12 +19,19 @@ public class GameButton : MonoBehaviour {
     public TextMeshProUGUI Cost_p1;
     public TextMeshProUGUI Cost_p2;
     public TextMeshProUGUI AbilityText;
+    
+    [Space]
+    public SoundCall ButtonFailureSound;
 
     private PlayerInfo PlayerInfo(PlayerManager.PlayerID id) => GameManager.Instance.PlayerManager.GetPlayerInfo(id);
+
+    private bool _initialized;
     
     public void ToggleSelected(bool selected, PlayerManager.PlayerID playerID) {
-        
-        if (selected) UIObjectFX.DoEffect("Button Selected", gameObject);
+
+        if (_initialized && selected) {
+            UIObjectFX.DoEffect("Button Selected", gameObject);
+        }
         
         switch(playerID){
             case PlayerManager.PlayerID.P1:
@@ -45,8 +52,8 @@ public class GameButton : MonoBehaviour {
             // TODO animate
             StartCooldownAnimation(playerID);
         } else {
-            // TODO animate
-            UIObjectFX.DoEffect("Purchase Failure", gameObject);
+            UIObjectFX.DoEffect("Button Usage Failure", gameObject);
+            PlayButtonFailureSound();
         }
     }
 
@@ -82,6 +89,8 @@ public class GameButton : MonoBehaviour {
         
         // Ability text
         AbilityText.text = AbilityData.ID;
+
+        _initialized = true;
     }
     
     private void UpdateCostText(PlayerManager.PlayerID playerID) {
@@ -90,6 +99,10 @@ public class GameButton : MonoBehaviour {
         TextMeshProUGUI text = playerID == PlayerManager.PlayerID.P1 ? Cost_p1 : Cost_p2;
         text.text = PlayerInfo(playerID).GetAbility(AbilityData)
             .CostToUse().ToString("N0");
+    }
+    
+    private void PlayButtonFailureSound() {
+        SoundManager.thisSoundManager.PlaySound(ButtonFailureSound, gameObject);
     }
 
     private class CooldownAnimation {

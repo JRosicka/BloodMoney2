@@ -12,3 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01b9b089dc214c5b82035df7e1be76ec, type: 3}
   m_Name: Attack Effect
   m_EditorClassIdentifier: 
+  AttackSound:
+    soundKey: Sound Effect Attack
+    soundUsed: {fileID: 5962833324647636924, guid: a9f2d0d77e97f4145be75f425eb309d8, type: 3}
+    priority: 100
+    volume: 0.3
+    pitch: 1
+    pitchVariation: 0.05
+    autoFadeRate: 0
+    autoFades: 0
