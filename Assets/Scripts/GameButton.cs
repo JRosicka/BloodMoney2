@@ -52,7 +52,7 @@ public class GameButton : MonoBehaviour {
             // TODO animate
             StartCooldownAnimation(playerID);
         } else {
-            UIObjectFX.DoEffect("Button Usage Failure", gameObject);
+            UIObjectFX.DoEffect("Purchase Failure", gameObject);
             PlayButtonFailureSound();
         }
     }

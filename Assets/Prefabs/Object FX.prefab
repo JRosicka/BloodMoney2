@@ -176,7 +176,7 @@ MonoBehaviour:
   EffectMappings:
   - EffectID: Button Selected
     Prefab: {fileID: 4725104055453349397}
-  - EffectID: Button Usage Failure
+  - EffectID: Purchase Failure
     Prefab: {fileID: 8465090044752710398}
 --- !u!1 &8465090044752710398
 GameObject:
@@ -252,10 +252,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Controller: {fileID: 0}
   ToggleState: 0
-  DecayRate: 0.8
+  DecayRate: 10.5
   TranslationMultiplier: 9
   RotationMultiplier: 11.8
-  PerlinSpeed: 24.93
+  PerlinSpeed: 15
   ValueCurve:
     serializedVersion: 2
     m_Curve:
